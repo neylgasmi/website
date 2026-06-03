@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CV — Neyl Gasmi</title>
+  <meta name="description" content="Curriculum Vitae of Neyl Gasmi — quantitative finance and mathematics.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <a class="site-name" href="index.html">Neyl Gasmi</a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="projects.html">Projects</a>
+        <a href="cv.html">CV</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="about.html">About</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <div class="page-header">
+        <h1>Curriculum Vitae</h1>
+      </div>
+
+      <ul class="cv-list">
+        <li>
+          <a href="docs/Curriculum%20Vitae.pdf">CV (PDF)</a>
+          <span class="cv-desc">PDF · Last updated April 2026</span>
+        </li>
+      </ul>
+
+      <h2>Quick summary</h2>
+
+      <h3>Education</h3>
+      <ul style="margin-top:.5rem;">
+        <li>Master Business Management Grande École, EDHEC <span style="color:var(--muted);">2024–2028</span></li>
+        <li>M1 Applied Mathematics, MAEF, Université Paris 1 <span style="color:var(--muted);">2025–2026</span></li>
+        <li>Bachelor Mathematics &amp; Statistics (Research Track), Université de Lille <span style="color:var(--muted);">2024–2025</span></li>
+        <li>Classes Préparatoires MPSI/MP, Lycée Notre-Dame de Sion <span style="color:var(--muted);">2022–2024</span></li>
+      </ul>
+
+      <h3>Experience</h3>
+      <ul style="margin-top:.5rem;">
+        <li>Research Intern — SAMM Lab, Université Paris 1 <span style="color:var(--muted);">2026, ongoing</span></li>
+        <li>Microstructure Research Intern — EuroCTP, Amsterdam <span style="color:var(--muted);">Jun–Aug 2025</span></li>
+      </ul>
+
+      <h3>Skills</h3>
+      <ul style="margin-top:.5rem;">
+        <li>Python (NumPy, SciPy, PyTorch, PySpark, Pandas), C++, SQL, LaTeX, Git</li>
+        <li>French (native), English (TOEIC 915/990)
+      </ul>
+
+    </main>
+
+    <footer>
+      <div class="footer-contact">
+        <a href="mailto:neylgasmi@gmail.com">neylgasmi@gmail.com</a> ·
+        <a href="https://www.linkedin.com/in/neylgasmi/" rel="noopener">LinkedIn</a> ·
+        <a href="https://github.com/hndrxxw" rel="noopener">GitHub</a>
+      </div>
+      <div class="footer-copy">© <span id="yr"></span> Neyl Gasmi</div>
+    </footer>
+
+  </div>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

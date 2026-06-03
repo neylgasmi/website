@@ -1,0 +1,111 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{microtype}
+\usepackage{geometry}
+\geometry{margin=2.2cm}
+\usepackage{enumitem}
+\setlist[enumerate,1]{label=\textbf{\arabic*.}, leftmargin=0pt, itemindent=2.2em, labelsep=.6em}
+\setlist[enumerate,2]{label=\textbf{\alph*)}, leftmargin=*, itemsep=.2em}
+\usepackage[most]{tcolorbox}
+\tcbset{boxrule=.4pt,arc=2pt,enhanced}
+
+\newcommand{\trip}[3]{\((#1\,;\,#2\,;\,#3)\)}
+\newcommand{\Ep}{E_p}
+
+\begin{document}
+
+\begin{tcolorbox}[colback=black!2!white,colframe=black!50!white]
+\large\textbf{Exercice 1 — Triangles à côtés entiers}
+\end{tcolorbox}
+
+On dit qu’un triangle est \emph{entier} si les longueurs de ses trois côtés sont des entiers
+naturels non nuls. On rappelle la propriété dite de l’\textbf{inégalité triangulaire} : dans tout triangle non aplati,
+la longueur de chaque côté est strictement inférieure à la somme des longueurs des deux autres.
+
+\begin{enumerate}
+\item
+\begin{enumerate}
+  \item Parmi les triplets suivants \((x;y;z)\), expliquer lequel désigne les longueurs
+  des côtés d’un triangle entier non aplati, puis comment tracer ce triangle et avec quels outils :
+  \trip{4}{4}{5}, \trip{3}{6}{9}, \trip{2}{2}{6}.
+  \item Quelles sont les valeurs possibles de l’entier \(z\) si \trip{15}{19}{z} désigne les longueurs
+  des trois côtés d’un triangle entier non aplati rangées par ordre croissant ?
+  \item Étant donnés trois entiers naturels non nuls \(x,y,z\) tels que \(x\le y\le z\),
+  quelle condition faut-il ajouter pour que le triplet \trip{x}{y}{z} désigne
+  les longueurs des côtés d’un triangle entier non aplati ?
+\end{enumerate}
+
+\item Soit \(p\) un entier naturel non nul. On désigne par \(\Ep\) l’ensemble des triplets d’entiers
+naturels rangés par ordre croissant \(x\le y\le z\) et désignant les côtés d’un triangle entier non aplati
+de \textbf{périmètre} égal à \(p\). Ainsi on obtient, par exemple,
+\[
+E_{9}=\{\trip{1}{4}{4},\,\trip{2}{3}{4},\,\trip{3}{3}{3}\}.
+\]
+\begin{enumerate}
+  \item Si un triplet appartient à \(E_{18}\), quelles sont les valeurs maximale et minimale possibles pour \(z\) ?
+  \item Donner la composition de \(E_{18}\) et représenter, dans un repère orthonormé,
+  l’ensemble des couples \((x,y)\) pour lesquels il existe un entier naturel \(z\) tel que
+  \trip{x}{y}{z}\(\in E_{18}\).
+  Vérifier que ces couples se situent à l’intérieur ou sur les bords d’un triangle dont les
+  sommets ont des coordonnées entières.
+  \end{enumerate}
+  
+ \item \textbf{}
+\begin{enumerate}
+  \item Justifier que si \trip{x}{y}{z}\(\in E_p\) alors \(\trip{x+1}{y+1}{z+1}\in E_{p+3}\).
+  \item Soit \trip{x}{y}{z}\(\in E_{p+3}\). Déterminer une condition sur \((x,y,z)\) pour que
+  \(\trip{x-1}{y-1}{z-1}\in E_{p}\).
+  \item En déduire que si \(p\) est impair, alors \(E_p\) et \(E_{p+3}\) ont le même nombre d’éléments.
+\end{enumerate}
+
+\item \textbf{Étude de \(E_{2019}\).}
+\begin{enumerate}
+  \item \(E_{2019}\) contient-il un triplet \trip{x}{y}{z} correspondant à un triangle équilatéral ?
+  \item \(E_{2019}\) contient-il des triplets correspondant à des triangles isocèles non équilatéraux ?
+  Si oui, combien ?
+  \item Montrer que si \(E_{2019}\) contient un triplet \trip{x}{y}{z} correspondant à un triangle rectangle,
+  alors
+  \[
+  2019^2=4038(x+y)-2xy.
+  \]
+  \item En déduire que \(E_{2019}\) ne contient pas de triangle rectangle.
+\end{enumerate}
+
+\item \textbf{Dénombrement de \(E_{2022}\).}
+\begin{enumerate}
+  \item Soit \trip{x}{y}{z}\(\in E_{2022}\). On rappelle \(x\le y\le z\).
+  Justifier que \(x+y\ge1012\) et \(x+2y\le2022\).
+  \item Réciproquement, montrer que si \(x\le y\), \(x+y\ge1012\) et \(x+2y\le2022\),
+  alors \trip{x}{y}{2022-x-y}\(\in E_{2022}\).
+  \item Justifier que, dans un repère orthonormé, l’ensemble des couples d’entiers naturels \((x,y)\)
+  tels que \(x\le y\), \(x+y\ge1012\) et \(x+2y\le2022\) constitue l’ensemble des points
+  à coordonnées entières d’un triangle.
+  Évaluer son aire et le nombre de points à coordonnées entières situés sur ses côtés.
+  \end{enumerate}
+
+ \item  On admet le Théorème de Pick:
+  \begin{tcolorbox}[colback=green!6!white,colframe=green!40!black,title=Théorème de Pick]
+    Si un polygone \(P\) est tel que tous ses sommets sont à coordonnées entières
+    dans un repère orthonormé, alors son aire est donnée par
+    \[
+      A = i + \frac{j}{2} - 1,
+    \]
+    où \(i\) désigne le nombre de points à coordonnées entières situés à l’intérieur de \(P\)
+    et \(j\) le nombre de ceux situés sur les côtés de \(P\).
+  \end{tcolorbox}
+En déduire le nombre de triplets de \(E_{2022}\), puis celui de \(E_{2019}\).
+\end{enumerate}
+
+\item \textbf{Une solution algorithmique.}
+\begin{enumerate}
+  \item De manière générale, concevoir un programme (à retranscrire sur la copie) qui énumère et dénombre les éléments de \(\Ep\).
+Le tester sur \(E_{2022}\) puis sur \(E_{2019}\).
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}

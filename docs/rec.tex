@@ -1,0 +1,104 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{Exercices de récurrence}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Exercice 1}
+On définit la suite $(u_n)_{n \in \mathbb{N}^*}$ par $u_1=1$ et la relation valable pour tout $n \in \mathbb{N}^*$ :
+\[
+u_{n+1} = u_n + 2n + 1.
+\]
+\begin{enumerate}
+\item Calculer $u_2, u_3, u_4$.
+\item Quelle conjecture peut-on faire sur l’expression de $u_n$ en fonction de $n$ ?
+\item Prouver que si pour un certain $k \in \mathbb{N}^*$ on a $u_k = k^2$, alors $u_{k+1} = (k+1)^2$.
+\item Conclure et calculer : $1+3+5+7+\cdots+2019$.
+\end{enumerate}
+
+\section*{Exercice 2}
+Prouver par récurrence que pour tout $n \in \mathbb{N}$, l’entier $8^n - 1$ est divisible par 7.
+
+\section*{Exercice 3}
+Prouver par récurrence que pour tout $n \in \mathbb{N}^*$ :
+\[
+\sigma_n = 1+2+3+\cdots+n = \frac{n(n+1)}{2}.
+\]
+
+\section*{Exercice 4}
+\begin{enumerate}
+\item Justifier que pour tout $n \in \mathbb{N}^*$, on a $\sqrt{n^2+n} \geq n$.
+\item En déduire par récurrence que
+\[
+\sum_{k=1}^n \frac{1}{\sqrt{k}} \geq \sqrt{n}.
+\]
+\end{enumerate}
+
+\section*{Exercice 5}
+D’après l’inégalité triangulaire :
+\[
+\forall x,y \in \mathbb{R}, \quad |x+y| \leq |x|+|y|.
+\]
+Démontrer que pour tout entier $n \geq 2$,
+\[
+\forall x_1, \dots, x_n \in \mathbb{R}, \quad 
+\left| \sum_{k=1}^n x_k \right| \leq \sum_{k=1}^n |x_k|.
+\]
+
+\section*{Exercice 6}
+Prouver que la suite de terme général
+\[
+u_n = \frac{2^n}{n!}
+\]
+est décroissante sur $\mathbb{N}^*$.
+
+
+\section*{Exercice 7}
+Écrire le produit des $n$ premiers entiers pairs non nuls avec la notation factorielle :
+\[
+2 \times 4 \times 6 \times \cdots \times 2n = ?
+\]
+
+\section*{Exercice 8}
+Prouver par récurrence que pour $n$ entier assez grand,
+\[
+2^n \geq n^2.
+\]
+
+\section*{Exercice 9}
+Soit $n$ un entier naturel et $\mathcal{P}(n)$ la proposition :
+\[
+\sum_{k=0}^n k = \tfrac{1}{2}\left(n+\tfrac{1}{2}\right)^2.
+\]
+Démontrer que $\mathcal{P}(n)$ est héréditaire, c’est-à-dire
+\[
+\forall n \in \mathbb{N}^*, \quad \mathcal{P}(n-1) \implies \mathcal{P}(n).
+\]
+
+\section*{Exercice 10}
+Soit $n \geq 1$. On pose
+\[
+u_n = 1+2+3+\cdots+n = \frac{n(n+1)}{2}, \quad
+v_n = 1^2+2^2+3^2+\cdots+n^2, \quad
+q_n = \frac{v_n}{u_n}.
+\]
+\begin{enumerate}
+\item Écrire un programme qui calcule pour tout $n \geq 1$, $v_n$ et $q_n$.  
+Écrire un programme qui calcule pour tout $n \geq 1$, $q_{n+1}-q_n$.
+\item Faire tourner ce programme pour diverses valeurs de $n$. Que constate-t-on ?
+\item En supposant que la constatation soit générale, qu’en déduit-on pour la suite $(q_n)$ et pour la suite $(v_n)$ ?
+\item Démontrer par récurrence la formule explicite trouvée pour $(v_n)$.
+\end{enumerate}
+
+\end{document}

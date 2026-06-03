@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Neyl Gasmi</title>
+  <meta name="description" content="Neyl Gasmi">
+
+
+  <meta property="og:title"       content="Neyl Gasmi">
+  <meta property="og:description" content="M2MO student at ENSAE — quant research, stochastic modelling, market microstructure.">
+  <meta property="og:image"       content="https://neylgasmi.github.io/og-image.png">
+  <meta property="og:url"         content="https://neylgasmi.github.io/">
+  <meta property="og:type"        content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <a class="site-name" href="index.html">Neyl Gasmi</a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="pages/research.html">Research</a>
+        <a href="pages/projects.html">Projects</a>
+        <a href="pages/cv.html">CV</a>
+        <a href="pages/teaching.html">Teaching</a>
+        <a href="pages/references.html">Références</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <h1>Neyl Gasmi</h1>
+
+      <p class="positioning">
+        Research intern at the
+<a href="https://samm.univ-paris1.fr/" rel="noopener">SAMM Lab</a>
+(Paris 1) with <a href="https://www.pantheonsorbonne.fr/page-perso/alain.celisse%40" rel="noopener">Alain Celisse</a>,
+applying state space models to variable star classification on OGLE-IV photometric time series.
+Previously at <a href="https://euroctp.eu/" rel="noopener">EuroCTP</a>,
+Amsterdam, on EU equity consolidated tape data quality.
+        <span class="internship-line">
+        </span>
+      </p>
+
+
+      
+      <h2>Selected work</h2>
+      <div class="cards">
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-title">Foundation Models for Astrophysics</span>
+            <span class="card-year">2026, ongoing</span>
+          </div>
+          <p>Applying Mamba (SSM) architectures to OGLE-IV light curves for variable star classification : exploring whether state space models can learn the latent temporal structure that distinguishes stellar classes.
+
+</p>
+          <div class="card-links">
+            <a href="pages/research.html">Details →</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-title">EuroCTP — EU Consolidated Tape reconstruction</span>
+            <span class="card-year">2025</span>
+          </div>
+          <p>Assessed consolidated tape data quality across multi-venue BMLL Level 3 order book feeds: quantified timestamp desynchronisation, 
+            latency, and inter-venue alignment biases. Research note supported the winning ESMA tender bid.</p>
+          <div class="card-links">
+            <a href="pages/research.html">Details →</a>
+          </div>
+        </div>
+
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-title">2D Ising model — Monte Carlo simulation</span>
+            <span class="card-year">2025</span>
+          </div>
+          <p>Metropolis–Hastings simulation, critical temperature estimation,
+          finite-size scaling near the Curie point.</p>
+          <div class="card-links">
+            <a href="pages/projects.html">Details →</a>
+            <a href="pdfs/ISING.pdf">PDF</a>
+          </div>
+        </div>
+
+      </div>
+
+
+    </main>
+
+    <footer>
+<div class="footer-copy">
+        © <span id="yr"></span> Neyl Gasmi
+      </div>
+    </footer>
+
+  </div>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

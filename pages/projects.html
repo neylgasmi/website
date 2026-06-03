@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects — Neyl Gasmi</title>
+  <meta name="description" content="Personal projects by Neyl Gasmi: Ising model, Kelly criterion, photovoltaic forecasting, equity microstructure.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <a class="site-name" href="../index.html">Neyl Gasmi</a>
+      <nav>
+        <a href="../index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="projects.html">Projects</a>
+        <a href="cv.html">CV</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="references.html">Références</a>
+      </nav>
+    </header>
+
+    <main>
+
+      
+      <div class="page-header">
+        <h1>Projects</h1>
+
+        <div class="project">
+        <h3>Sequential jump detection at high frequency via e-values and online FDR control</h3>
+        <p class="project-meta">TER 2025–2026, supervised by Alain Celisse (SAMM)</p>
+        <dl>
+          <dt>Problem</dt>
+          <dd>Detect price jumps online in high-frequency data under an Itô semimartingale,
+          while controlling the false discovery rate sequentially, a setting where
+          Benjamini–Hochberg becomes invalid because PRDS fails under dense jumps.</dd>
+          <dt>Method</dt>
+          <dd>GROW e-values built as integrated likelihood ratios under a Gaussian prior,
+          using a causal MedRV spot-volatility window; fed into five e-value FDR procedures
+          (e-BH, e-LOND, e-LORD, e-SAFFRON, stopped e-BH) and benchmarked against BH on
+          Lee–Mykland and BNS p-values. Monte-Carlo grid over Heston + Merton/Hawkes
+          regimes, three frequencies, M = 100 replications.</dd>
+          <dt>Result</dt>
+          <dd>BH violates FDR at ∆t = 5 s (observed 0.096 vs. threshold 0.094 at α = 0.05),
+          while all e-value procedures control FDR at every frequency. Stopped e-BH gives
+          the best power–safety trade-off (power 0.349 vs. BH 0.441, FDR ≤ 0.016).
+          Identified and quantified the alpha-death failure mode of e-LORD/e-SAFFRON when
+          ω₁ is mis-scaled.</dd>
+        </dl>
+        <div class="project-links">
+          <a href="../pdfs/TER.pdf">PDF</a>
+      
+        </div>
+      </div>
+
+      </div>
+      <div class="project">
+        <h3>2D Ising model — Monte Carlo simulation</h3>
+        <p class="project-meta"></p>
+        <dl>
+          <dt>Problem</dt>
+          <dd>Simulate the phase transition of a 2D ferromagnet and recover the critical temperature.</dd>
+          <dt>Method</dt>
+          <dd>Metropolis–Hastings algorithm on a square lattice; magnetisation and energy measured
+          as a function of temperature; finite-size scaling to extrapolate the Curie temperature.</dd>
+          <dt>Result</dt>
+          <dd>Recovered T<sub>c</sub> ≈ 2.269 J/k<sub>B</sub> (consistent with Onsager's exact result);
+          observed critical slowing-down near T<sub>c</sub>.</dd>
+        </dl>
+        <div class="project-links">
+          <a href="../pdfs/ISING.pdf">PDF</a>
+        </div>
+      </div>
+
+     
+      <div class="project">
+        <h3>Photovoltaic power forecasting</h3>
+        <p class="project-meta">2022–2023 · TIPE (14,5/20)</p>
+        <dl>
+          <dt>Problem</dt>
+          <dd>Forecast the power output of a photovoltaic panel from meteorological features.</dd>
+          <dt>Method</dt>
+          <dd>Physical modelling of panel output from solar irradiance and meteorological data;
+          Monte Carlo simulation to propagate uncertainty over the panel's parameters.</dd>
+          <dt>Result</dt>
+          <dd>Empirical distribution of power output under varying irradiance conditions;
+          sensitivity analysis identifying the most influential physical parameters.</dd>
+
+        </dl>
+        <div class="project-links">
+          <a href="../docs/MCOT23.pdf">Summary</a>
+        </div>
+      </div>
+
+            <div class="project">
+        <h3>Statistical sports betting — Kelly criterion</h3>
+        <p class="project-meta">2024 · TIPE (14/20)</p>
+        <dl>
+          <dt>Problem</dt>
+          <dd>Can a bettor achieve positive long-run returns by exploiting mispriced bookmaker odds?</dd>
+          <dt>Method</dt>
+          <dd>Expected-value analysis on historical bookmaker markets; bankroll dynamics under the
+          Kelly criterion; variance-constrained fractional Kelly; drawdown simulation via Monte Carlo.</dd>
+          <dt>Result</dt>
+          <dd>Identified conditions under which edge is extractable; showed that volatility drag makes
+          full Kelly dangerous even at positive EV. Fractional Kelly materially improves
+          risk-adjusted growth.</dd>
+        </dl>
+        <div class="project-links">
+          <a href="../pdfs/Kelly.pdf">PDF (presentation)</a>
+          <a href="../docs/MCOT24.pdf">Summary</a>
+        </div>
+      </div>
+
+    </main>
+
+    <footer>
+      <div class="footer-contact">
+        <a href="mailto:neylgasmi@gmail.com">neylgasmi@gmail.com</a> ·
+        <a href="https://www.linkedin.com/in/neylgasmi/" rel="noopener">LinkedIn</a> ·
+        <a href="https://github.com/neylgs" rel="noopener">GitHub</a> ·
+
+      </div>
+      <div class="footer-copy">© <span id="yr"></span> Neyl Gasmi</div>
+    </footer>
+
+  </div>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

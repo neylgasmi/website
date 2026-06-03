@@ -1,0 +1,175 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{titlesec}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage[margin=2.5cm]{geometry}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\setlist[enumerate]{itemsep=4pt}
+\titleformat{\subsection}
+  {\normalfont\bfseries}
+  {}
+  {0pt}
+  {}
+
+\begin{document}
+
+\section*{Quiz}
+
+\begin{enumerate}
+  \item La droite $D$ a pour équation $x=3$. Est-ce une droite horizontale ? Verticale ?
+  \item Quelle est l'équation réduite d'une droite horizontale ?
+  \item Si $D : y=ax+b$, comment sont appelés $a$ et $b$ ?
+  \item On sait que la droite $D$ passe par $A(x_A,y_A)$ et $B(x_B,y_B)$. Combien vaut son coefficient directeur ?
+  \item Comment déterminer l'équation de la droite passant par $A(x_A,y_A)$ et $B(x_B,y_B)$ ?
+  \item À quelle condition deux droites sont-elles parallèles ?
+  \item La droite $D$ a pour équation $y=4x-5$. Le point $A(1,0)$ appartient-il à $D$ ?
+  \item Les droites $D : y=\frac13x-1$ et $\Delta : y=2+\frac13x$ sont-elles parallèles ?
+  \item $D : y=ax+b$ et $\Delta : y=mx+p$. Si $D$ et $\Delta$ sont sécantes, quel système leur point d'intersection vérifie-t-il ?
+  \item Quelle peut être l'intersection de deux droites ?
+\end{enumerate}
+
+\section*{Exercice 1 — Donner l’équation d’une droite avec deux points}
+
+Dans les cas suivants, donner l’équation réduite de la droite $(AB)$.
+\begin{enumerate}
+  \item $A(2,1)$ et $B(-1,4)$.
+  \item $A(-3,2)$ et $B(5,-1)$.
+  \item $A(1,0)$ et $C(5,4)$ et $B$ est le milieu de $[AC]$.
+\end{enumerate}
+
+\section*{Exercice 2 — Deux problèmes voisins}
+
+\begin{enumerate}
+  \item Soit $A(-3,4)$ et $B(2,1)$. Déterminer une équation de la droite $(AB)$.
+  \item Soit $A(2,3)$ et $B(-1,5)$. Démontrer que $2x+3y=13$ est une équation de la droite $(AB)$.
+\end{enumerate}
+
+\section*{Exercice 3 — Droite parallèle}
+
+Dans les cas suivants, donner une équation de la droite demandée.
+\begin{enumerate}
+  \item La droite $D$ passant par $A(2,1)$ et parallèle à $\Delta : y=-3x+1$.
+  \item La droite $D$ passant par $A(5,0)$ et parallèle à $\Delta : y=12x+2$.
+\end{enumerate}
+
+\section*{Exercice 4 — Droites, équations et coefficients directeurs}
+
+Pour chacune des équations de droites suivantes, exprimées dans un repère orthonormal, déterminer :
+\begin{itemize}
+  \item la nature de la droite (oblique, horizontale ou verticale),
+  \item le coefficient directeur,
+  \item un point appartenant à la droite.
+\end{itemize}
+
+\begin{enumerate}
+  \item $y=\dfrac{7x-2}{3}$
+  \item $3x-4y=1$
+  \item $\dfrac{x}{3}-\dfrac{y}{5}=1$
+  \item $5x=2$
+  \item $x-y=x-1$
+\end{enumerate}
+
+\section*{Exercice 6 — Déjà vu}
+
+Dans un repère, les points $A(0,-7)$, $B(-4,0)$ et $C(77,-146)$ sont-ils alignés ?
+
+\section*{Exercice 7 — Points alignés et équations de droites}
+
+Soit le repère orthonormal $(O;I;J)$.  
+On considère les points $A(3,0)$, $B(0,3)$, $C(7,0)$, $D(0,7)$.  
+On appelle $E$ le milieu du segment $[AB]$, $F$ le milieu du segment $[DC]$, et $G$ le point d’intersection des droites $(AD)$ et $(BC)$.
+
+\begin{enumerate}
+  \item Déterminer les équations réduites des droites $(AD)$ et $(BC)$.
+  \item En déduire les coordonnées du point $G$.
+  \item Calculer les coordonnées des points $E$ et $F$.
+  \item Conclure que les points $O$, $E$, $G$, $F$ sont alignés.
+\end{enumerate}
+
+\section*{Exercice 9 — Avec un paramètre}
+
+Résoudre, suivant les valeurs de $t\in\mathbb{R}$, le système d’inconnue $(x,y)\in\mathbb{R}^2$ :
+\[
+\begin{cases}
+2tx+(t+1)y=2\\
+(t+2)x+(2t+1)y=t+2
+\end{cases}
+\]
+
+\section*{Exercice 10 — Coefficient directeur}
+
+Soient $A(x_A,y_A)$ et $B(x_B,y_B)$ avec $x_A\neq x_B$.  
+Démontrer que le coefficient directeur de la droite $(AB)$ est
+\[
+m=\dfrac{y_B-y_A}{x_B-x_A}.
+\]
+
+\section*{Exercice 11 — Deux représentations paramétriques}
+
+Soient
+\[
+(D)\ :
+\begin{cases}
+x=-1+4t\\
+y=2-3t
+\end{cases}
+\qquad
+(D')\ :
+\begin{cases}
+x=1-t\\
+y=3+5t
+\end{cases}
+\quad (t\in\mathbb{R})
+\]
+
+\begin{enumerate}
+  \item Les vecteurs $\vec u(4,-3)$ et $\vec v(-1,5)$ sont-ils colinéaires ?  
+  Que peut-on en déduire pour l’intersection des droites $(D)$ et $(D')$ ?
+  \item Démontrer que le système
+  \[
+  \begin{cases}
+  -1+4t=1-t\\
+  2-3t=3+5t
+  \end{cases}
+  \]
+  n’admet pas de solution. Comment concilier ce résultat avec le précédent ?
+  \item Déterminer l’intersection des droites $(D)$ et $(D')$.
+\end{enumerate}
+
+\section*{Exercice 12}
+
+Soit $D$ une droite du plan qui ne passe pas par l’origine.  
+On suppose que $D$ coupe l’axe des abscisses en $A(\alpha,0)$ et l’axe des ordonnées en $B(0,\beta)$.  
+Donner une équation de la droite $D$.
+
+\section*{Exercice 14 — Suite arithmético-géométrique}
+
+Soit la suite $(u_n)$ définie par $u_0$ et :
+\[
+\forall n\in\mathbb{N},\quad u_{n+1}=f(u_n)\quad \text{où}\quad f(x)=ax+b.
+\]
+
+Pour chacune des valeurs de $a$ et $b$ données, répondre aux questions ci-dessous :
+\[
+\text{i) } a=\tfrac12,\ b=1
+\qquad
+\text{ii) } a=-\tfrac23,\ b=5
+\qquad
+\text{iii) } a=1{,}5,\ b=-1
+\]
+
+\begin{enumerate}
+  \item Représenter la courbe de $f$ dans un repère orthonormal ainsi que la droite $D$ d’équation $y=x$.
+  \item Représenter les premiers termes de la suite sur l’axe des abscisses.
+  \item Déterminer $\alpha$, solution de $f(x)=x$.
+  \item On pose $v_n=u_n-\alpha$. Démontrer que $(v_n)$ est une suite géométrique.
+  \item En déduire l’expression de $u_n$ en fonction de $n$.
+\end{enumerate}
+
+\end{document}

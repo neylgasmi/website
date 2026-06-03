@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research — Neyl Gasmi</title>
+  <meta name="description" content="Research by Neyl Gasmi: self-supervised learning for variable stars at SAMM Lab, EU consolidated tape at EuroCTP.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <a class="site-name" href="../index.html">Neyl Gasmi</a>
+      <nav>
+        <a href="../index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="projects.html">Projects</a>
+        <a href="cv.html">CV</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="references.html">Références</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <div class="page-header">
+        <h1>Research</h1>
+      </div>
+
+    
+      <h2>Ongoing</h2>
+
+      <div class="research-block">
+        <h3>Foundation Models for Astrophysics</h3>
+        <p class="research-meta">
+          Supervised by <a href="https://www.pantheonsorbonne.fr/page-perso/alain.celisse%40" rel="noopener">Alain Celisse</a>
+        </p>
+
+        <p class="refs">
+          <a href="https://arxiv.org/abs/2312.00752" rel="noopener">Mamba (Gu &amp; Dao, 2023)</a> ·
+          <a href="https://arxiv.org/abs/2002.05709" rel="noopener">SimCLR (Chen et al., 2020)</a> ·
+          <a href="https://arxiv.org/abs/1907.05321" rel="noopener">GRU-ODE (De Brouwer et al., 2019)</a> ·
+          <a href="https://arxiv.org/abs/2010.02803" rel="noopener">Raindrop (Zhang et al., 2021)</a>
+        </p>
+      </div>
+
+      <hr>
+
+      <div class="research-block">
+        <h3>Jump detection in asset prices via sequential FDR control</h3>
+        <p class="research-meta">
+          Supervised by <a href="https://www.pantheonsorbonne.fr/page-perso/alain.celisse%40" rel="noopener">Alain Celisse</a>
+        </p>
+
+        <p class="refs">
+          <a href="https://arxiv.org/abs/2009.02824" rel="noopener">e-BH procedure (Wang &amp; Ramdas, 2022)</a> ·
+          <a href="https://arxiv.org/abs/2106.05457" rel="noopener">e-values: calibration &amp; properties (Vovk &amp; Wang, 2021)</a> ·
+          <a href="https://doi.org/10.1111/j.1467-9965.2007.00312.x" rel="noopener">Lee-Mykland jump test (2008)</a> ·
+          <a href="https://doi.org/10.3982/ECTA7439" rel="noopener">Aït-Sahalia &amp; Jacod (2009)</a>
+        </p>
+      </div>
+
+      <hr>
+
+    
+      <h2>Past</h2>
+
+      <div class="research-block">
+        <h3>EU Consolidated Tape reconstruction</h3>
+        <p class="research-meta">
+          EuroCTP, Amsterdam · Jun–Aug 2025 · Internship
+        </p>
+
+        <p><strong>Context.</strong> MiFID II fragmented European equity trading across
+        dozens of venues, destroying the consolidated view of best prices that a
+        centralised exchange would provide. MiFIR Article 22a mandates a Consolidated
+        Tape Provider (CTP) for equities; on 19 December 2025, ESMA selected EuroCTP
+        as the first equities CTP for the EU, with a target go-live in July 2026.</p>
+
+       <p><strong>Work.</strong> Exploratory microstructure research on BMLL Level 3
+        order book data to inform the design of the equity consolidated tape. Mapped
+        market events and microstructure biases capable of distorting the EBBO (European
+        Best Bid and Offer), auction transitions, crossed/locked books, stale quotes,
+        venue-level latency skew and proposed data-quality checks and acceptance
+        thresholds to filter them. Studied the statistical power of candidate EBBO
+        estimators and stress-tested the tape's reconstruction algorithm against these
+        edge cases.</p>
+
+
+        <p><strong>Tools.</strong> Pandas, PySpark, SQL, Clustering. Data: BMLL Data Lab.</p>
+      </div>
+
+      <hr>
+
+      
+      <h2>Research interests</h2>
+
+      <div class="tags">
+        <span class="tag">State Space Models</span>
+        <span class="tag">Multiple testing &amp; FDR control</span>
+        <span class="tag">Astronomy</span>
+      </div>
+
+    </main>
+
+    <footer>
+      <div class="footer-copy">© <span id="yr"></span> Neyl Gasmi</div>
+    </footer>
+
+  </div>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage[margin=2.5cm]{geometry}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\setlist[enumerate]{itemsep=4pt, topsep=4pt}
+
+\begin{document}
+
+\section*{Énoncé}
+
+\subsection*{Partie A : Questions préliminaires}
+On considère trois entiers deux à deux distincts et compris entre $1$ et $9$.
+\begin{enumerate}
+  \item Quelle est la plus petite valeur possible pour leur somme ?
+  \item Quelle est la plus grande valeur possible pour leur somme ?
+\end{enumerate}
+
+\subsection*{Partie B : Les triangles magiques}
+On place tous les nombres entiers de $1$ à $9$ dans les neuf cases situées sur le pourtour d'un triangle, comme indiqué sur la figure ci-dessous.
+
+\begin{center}
+\begin{tikzpicture}[scale=1, every node/.style={draw, minimum size=7mm, inner sep=1pt}]
+
+  \coordinate (A) at (0,3.6);
+  \coordinate (B) at (-3.6,0);
+  \coordinate (C) at (3.6,0);
+
+  \coordinate (L1) at ($(A)!1/3!(B)$);
+  \coordinate (L2) at ($(A)!2/3!(B)$);
+
+  \coordinate (R1) at ($(A)!1/3!(C)$);
+  \coordinate (R2) at ($(A)!2/3!(C)$);
+
+  \coordinate (D1) at ($(B)!1/3!(C)$);
+  \coordinate (D2) at ($(B)!2/3!(C)$);
+
+
+  \node at (A)  {$n_1$};
+  \node at (L1) {$n_2$};
+  \node at (L2) {$n_3$};
+  \node at (B)  {$n_4$};
+  \node at (D1) {$n_5$};
+  \node at (D2) {$n_6$};
+  \node at (C)  {$n_7$};
+  \node at (R2) {$n_8$};
+  \node at (R1) {$n_9$};
+
+
+  \draw (A)--(B)--(C)--cycle;
+\end{tikzpicture}
+\end{center}
+
+Si les sommes des quatre nombres situés sur chacun des trois côtés du triangle ont la même valeur $S$, on dit que le triangle est $S$-magique.
+(C'est-à-dire si :
+\[
+n_1+n_2+n_3+n_4 \;=\; n_4+n_5+n_6+n_7 \;=\; n_7+n_8+n_9+n_1 \;=\; S.)
+\]
+On se propose de déterminer toutes les valeurs possibles de $S$.
+
+\begin{enumerate}
+  \item Compléter le triangle suivant de sorte qu'il soit $20$-magique, c'est-à-dire $S$-magique de somme $S=20$.
+\end{enumerate}
+
+\begin{center}
+\begin{tikzpicture}[scale=1, every node/.style={draw, minimum size=7mm, inner sep=1pt}]
+  \coordinate (A) at (0,3.6);
+  \coordinate (B) at (-3.6,0);
+  \coordinate (C) at (3.6,0);
+
+  \coordinate (L1) at ($(A)!1/3!(B)$);
+  \coordinate (L2) at ($(A)!2/3!(B)$);
+
+  \coordinate (R1) at ($(A)!1/3!(C)$);
+  \coordinate (R2) at ($(A)!2/3!(C)$);
+
+  \coordinate (D1) at ($(B)!1/3!(C)$);
+  \coordinate (D2) at ($(B)!2/3!(C)$);
+
+  \node at (A)  {$2$};
+  \node at (L1) {$n_2$};
+  \node at (L2) {$n_3$};
+  \node at (B)  {$5$};
+  \node at (D1) {$n_5$};
+  \node at (D2) {$n_6$};
+  \node at (C)  {$8$};
+  \node at (R2) {$n_8$};
+  \node at (R1) {$n_9$};
+
+  \draw (A)--(B)--(C)--cycle;
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}\setcounter{enumi}{1}
+  \item On considère un triangle $S$-magique et on appelle $T$ la somme des nombres placés sur les trois sommets.
+  \begin{enumerate}
+    \item Prouver qu'on a $45+T=3S$.
+    \item En déduire qu'on a $17 \le S \le 23$.
+    \item Donner la liste des couples $(S,T)$ ainsi envisageables.
+  \end{enumerate}
+  \item Proposer un triangle $17$-magique.
+  \item Prouver qu'il n'existe pas de triangle $18$-magique.
+  \item
+  \begin{enumerate}
+    \item Montrer que dans un triangle $19$-magique, $7$ est nécessairement situé sur un sommet du triangle.
+    \item Proposer un triangle $19$-magique.
+  \end{enumerate}
+  \item Prouver que, s'il existe un triangle $S$-magique, alors il existe aussi un triangle $(40-S)$-magique.
+  \item Pour quelles valeurs de $S$ existe-t-il au moins un triangle $S$-magique ?
+\end{enumerate}
+
+\end{document}

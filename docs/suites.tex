@@ -1,0 +1,188 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{titlesec}
+
+% Style des titres d'exercices
+\titleformat{\subsection}
+  {\normalfont\bfseries\small}
+  {}
+  {0pt}
+  {}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\setlist[enumerate]{itemsep=4pt}
+
+\begin{document}
+
+\section*{Exercices}
+
+\subsection*{Exercice 1}
+
+On définit trois suites $(c_n)_{n\in\mathbb{N}}$, $(s_n)_{n\in\mathbb{N}}$ et $(t_n)_{n\in\mathbb{N}}$ par
+\[
+\forall n\in\mathbb{N},\quad
+c_n=\frac{2^n+2^{-n}}{2},\qquad
+s_n=\frac{2^n-2^{-n}}{2},\qquad
+t_n=\frac{s_n}{c_n}.
+\]
+
+\begin{enumerate}
+  \item Démontrer que ces trois suites sont croissantes.
+  \item Démontrer que, pour tout $(n,m)\in\mathbb{N}^2$,
+  \[
+  c_{n+m}=c_nc_m+s_ns_m,\quad
+  s_{n+m}=s_nc_m+s_mc_n,\quad
+  t_{n+m}=\frac{t_n+t_m}{1+t_nt_m}.
+  \]
+  \item Démontrer que, pour tout $n\in\mathbb{N}$,
+  \[
+  c_n^2-s_n^2=1.
+  \]
+\end{enumerate}
+
+\subsection*{Exercice 2}
+
+On considère la suite $(u_n)$ définie par
+\[
+\forall n\in\mathbb{N},\quad
+u_n=\frac{2n^2+1}{n^2+5}.
+\]
+
+Montrer que $(u_n)$ est une suite strictement croissante sur $\mathbb{N}$.
+
+\subsection*{Exercice 3}
+
+On considère la suite $(u_n)$ définie par
+\[
+u_n=1+\frac{1}{2^2}+\frac{1}{3^2}+\cdots+\frac{1}{n^2}.
+\]
+
+Montrer que $(u_n)$ est strictement croissante.
+
+\subsection*{Exercice 4}
+
+Étudier le sens de variation de la suite $(u_n)$ définie pour tout entier naturel $n$ par :
+\begin{enumerate}
+  \item $u_n=n^2+4n+3$,
+  \item $u_n=\dfrac{2^n}{n+1}$,
+  \item $u_n=\dfrac{1-n^2}{n+2}$,
+  \item $u_0=1$ et $u_{n+1}=u_n-\dfrac{1}{n+1}$.
+\end{enumerate}
+
+\subsection*{Exercice 5 — Suite arithmético-géométrique}
+
+Soit $a\neq 1$ et $b$ deux réels.  
+On définit la suite arithmético-géométrique $(u_n)$ par
+\[
+u_0\in\mathbb{R},\qquad \forall n\in\mathbb{N},\quad u_{n+1}=au_n+b.
+\]
+
+\begin{enumerate}
+  \item Que se passe-t-il si $b=0$ ?
+  \item Soit $x_0$ l’unique solution de l’équation $ax+b=x$.  
+  Que se passe-t-il si $u_0=x_0$ ?
+  \item Soit $(v_n)$ la suite définie par
+  \[
+  \forall n\in\mathbb{N},\quad v_n=u_n-x_0.
+  \]
+  Démontrer que $(v_n)$ est géométrique de raison $a$ et préciser $v_0$.
+  \item À partir de la forme explicite de $(v_n)$, donner celle de $(u_n)$.
+  \item Application numérique : $a=-2$, $b=3$ et $u_0=-1$.
+\end{enumerate}
+
+\subsection*{Exercice 6}
+
+Soit $(u_n)$ une suite vérifiant
+\[
+\forall n\ge 0,\quad u_{n+1}=2u_n+n \quad \text{et} \quad u_0=1.
+\]
+
+\begin{enumerate}
+  \item Montrer qu’il existe $(a,b)\in\mathbb{R}^2$ tel que la suite $(w_n)$ définie par
+  \[
+  \forall n\in\mathbb{N},\quad w_n=an+b
+  \]
+  vérifie $w_{n+1}=2w_n+n$.
+  \item Montrer que la suite $z_n=u_n+n+1$ vérifie $z_{n+1}=2z_n$.
+  \item En déduire l’expression de $z_n$ puis celle de $u_n$.
+\end{enumerate}
+
+\subsection*{Exercice 7}
+
+On considère l’ensemble $(E)$ des suites $(x_n)$ définies sur $\mathbb{N}$ et vérifiant
+\[
+\forall n\in\mathbb{N}^*,\quad x_{n+1}-x_n=0{,}24\,x_{n-1}.
+\]
+
+\begin{enumerate}
+  \item Soit $\lambda\neq 0$ et $t_n=\lambda^n$.  
+  Montrer que $(t_n)\in(E)$ si et seulement si $\lambda$ est solution de
+  \[
+  \lambda^2-\lambda-0{,}24=0.
+  \]
+  En déduire les suites $(t_n)$ appartenant à $(E)$.
+  \item On admet que $(E)$ est l’ensemble des suites $(u_n)$ définies par
+  \[
+  \exists (\alpha,\beta)\in\mathbb{R}^2,\quad
+  \forall n\in\mathbb{N},\quad
+  u_n=\alpha(1{,}2)^n+\beta(-0{,}2)^n.
+  \]
+  Déterminer $\alpha$ et $\beta$ sachant que $u_0=6$ et $u_1=6{,}6$.
+\end{enumerate}
+
+\subsection*{Exercice 8}
+
+Soit $(u_n)$ la suite définie pour $n\ge 1$ par
+\[
+\forall n\in\mathbb{N},\quad
+u_n=\sum_{k=1}^n \frac{1}{\sqrt{k}}
+=1+\frac{1}{\sqrt{2}}+\frac{1}{\sqrt{3}}+\cdots+\frac{1}{\sqrt{n}}.
+\]
+
+\begin{enumerate}
+  \item Justifier que, pour tout $k$ tel que $1\le k\le n$, on a
+  \[
+  \frac{1}{\sqrt{k}}\ge\frac{1}{\sqrt{n}}.
+  \]
+  \item En déduire que, pour tout $n\ge 1$, $u_n\ge\sqrt{n}$.
+\end{enumerate}
+
+\subsection*{Problème — Suite homographique}
+
+On considère la suite $(u_n)$ définie par
+\[
+u_0=1,\qquad \forall n\in\mathbb{N},\quad
+u_{n+1}=\frac{3+2u_n}{2+u_n}.
+\]
+
+\begin{enumerate}
+  \item Calculer les quatre premiers termes de la suite.
+  \item Expliquer pourquoi tous les termes de $(u_n)$ sont positifs.
+  \item Démontrer que, pour tout $n\in\mathbb{N}^*$,
+  \[
+  u_n\ge \frac{3}{2}.
+  \]
+  \item On définit $(v_n)$ par
+  \[
+  \forall n\in\mathbb{N},\quad
+  v_n=\frac{u_n-\sqrt{3}}{u_n+\sqrt{3}}.
+  \]
+  \begin{enumerate}
+    \item Montrer que $(v_n)$ est géométrique (préciser $v_0$ et la raison).
+    \item Exprimer $v_n$ puis $u_n$ en fonction de $n$.
+    \item Étudier les variations de $(u_n)$.
+  \end{enumerate}
+  \item Démontrer que, pour tout $n\in\mathbb{N}$,
+  \[
+  u_n<\sqrt{3}.
+  \]
+\end{enumerate}
+
+\end{document}

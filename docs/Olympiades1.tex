@@ -1,0 +1,160 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{forest}
+
+\begin{document}
+
+\section*{Génération à la suite}
+
+\subsection*{Les fils d’une fraction strictement positive}
+
+Soient $i$ et $j$ des entiers strictement positifs.  
+On dit que les deux fils de la fraction $\dfrac{i}{j}$ sont les fractions 
+\[
+\dfrac{i}{i+j} \quad \text{et} \quad \dfrac{i+j}{j}.
+\]
+
+On dit que $\dfrac{i}{i+j}$ est le \textbf{fils gauche} et que $\dfrac{i+j}{j}$ est le \textbf{fils droit} de $\dfrac{i}{j}$.
+
+L’arbre ci-dessous illustre la situation :
+
+\[
+\begin{forest}
+for tree={
+  align=center,
+  math content,
+  l sep=8mm, s sep=10mm,
+  edge={-latex}, % petites flèches
+}
+[\dfrac{i}{j}
+  [\dfrac{i}{i+j}]
+  [\dfrac{i+j}{j}]
+]
+\end{forest}
+\]
+
+Par exemple, $\dfrac{7}{5}$ a pour fils gauche
+\[
+\dfrac{7}{7+5} = \dfrac{7}{12},
+\]
+et pour fils droit
+\[
+\dfrac{7+5}{5} = \dfrac{12}{5}.
+\]
+
+\bigskip
+
+\textbf{Q1 :} Quels sont les deux fils de $\dfrac{8}{9}$ ?  
+
+\textbf{Q2 :} Trouver la fraction dont un des fils est $\dfrac{3}{8}$.  
+
+\textbf{Q3 :} Trouver la fraction dont un des fils est $\dfrac{111}{7}$.  
+
+\textbf{Q4 :} De manière générale, justifier que l’un des fils de $\dfrac{i}{j}$ est inférieur strictement à $1$ et que l’autre est supérieur strictement à $1$.
+
+\subsection*{Arbre et suite de Calkin-Wilf}
+
+L'\textbf{arbre de Calkin-Wilf} s’obtient en prenant la fraction 
+\[
+\dfrac{1}{1}
+\]
+à la racine et en associant à chaque fraction ses deux fils (comme dans la partie A).
+
+\begin{center}
+\begin{forest}
+for tree={
+  align=center,
+  math content,
+  l sep=10mm, s sep=12mm,
+  rectangle, draw, rounded corners, inner sep=2pt
+}
+[\dfrac{1}{1}
+  [\dfrac{1}{2}
+    [\dfrac{1}{3}
+      [,draw,rectangle,minimum width=8mm,minimum height=6mm]
+      [,draw,rectangle,minimum width=8mm,minimum height=6mm]
+    ]
+    [\dfrac{3}{2}
+      [,draw,rectangle,minimum width=8mm,minimum height=6mm]
+      [,draw,rectangle,minimum width=8mm,minimum height=6mm]
+    ]
+  ]
+  [\dfrac{2}{1}
+    [\dfrac{2}{3}
+      [,draw,rectangle,minimum width=8mm,minimum height=6mm]
+      [,draw,rectangle,minimum width=8mm,minimum height=6mm]
+    ]
+    [\dfrac{3}{1}
+      [,draw,rectangle,minimum width=8mm,minimum height=6mm]
+      [,draw,rectangle,minimum width=8mm,minimum height=6mm]
+    ]
+  ]
+]
+\end{forest}
+\end{center}
+\end{itemize}
+
+
+\medskip
+
+\textbf{Q5 :} Donner, sur sa copie, toutes les fractions de la ligne 4 de cet arbre.  
+
+\textbf{Q6 :} Montrer que la fraction $\dfrac{44}{13}$ apparaît dans l’arbre. Sur quelle ligne apparaît-elle ?  
+
+\medskip
+
+La \textbf{suite de Calkin-Wilf} est la suite $(u_n)_{n \geq 1}$ des fractions lues de gauche à droite, ligne par ligne en descendant l’arbre de Calkin-Wilf.  
+
+Ainsi, les premiers termes de la suite $(u_n)$ sont :  
+\[
+u_1 = \dfrac{1}{1}, \quad
+u_2 = \dfrac{1}{2}, \quad
+u_3 = \dfrac{2}{1}, \quad
+u_4 = \dfrac{1}{3}, \quad
+u_5 = \dfrac{3}{2}, \quad
+u_6 = \dfrac{2}{3}, \quad
+u_7 = \dfrac{3}{1}.
+\]
+
+\textbf{Q7 :} Donner la fraction égale à $u_{32}$.  
+
+\textbf{Q8 :} On constate que les deux fils de $u_3$ sont $u_6$ et $u_7$.  
+
+Recopier et compléter, sur sa copie, les deux phrases suivantes (aucune justification n’est attendue) :  
+
+\begin{itemize}
+    \item « Les deux fils de $u_6$ sont $u_{...}$ et $u_{...}$. »  
+    \item « Si $n$ désigne un entier naturel supérieur ou égal à 1, les deux fils de $u_n$ sont $u_{...}$ et $u_{...}$. »  
+\end{itemize}
+
+\subsection*{Suite de Stern}
+
+La \textbf{suite de Stern} est la suite $(v_n)_{n \geq 1}$ dont les termes sont les numérateurs des fractions lues de gauche à droite, ligne par ligne en descendant l’arbre de Calkin-Wilf.  
+
+On obtient ainsi :  
+\[
+v_1 = 1, \quad v_2 = 1, \quad v_3 = 2, \quad v_4 = 1, \quad v_5 = 3, \quad v_6 = 2, \quad v_7 = 3.
+\]
+
+\textbf{Q9 :} Donner les valeurs numériques de $v_8$ à $v_{15}$.  
+
+On admet que pour tout entier naturel $n$ non nul, le dénominateur de la $n$-ième fraction de la suite de Calkin-Wilf est aussi le numérateur de la $(n+1)$-ième.  
+
+Autrement dit, on admettra que pour tout entier naturel $n$ non nul, on a :  
+\[
+u_n = \dfrac{v_n}{v_{n+1}}.
+\]
+
+\textbf{Q10 :} Utiliser les résultats précédents pour montrer que, pour tout entier $n$ supérieur ou égal à $1$, on a les égalités suivantes :  
+\[
+v_{2n} = v_n, 
+\qquad 
+v_{2n+1} = v_n + v_{n+1}.
+\]
+
+\textbf{Q11 :} En déduire les valeurs numériques de $v_{64}$ et $v_{65}$.
+
+\end{document}

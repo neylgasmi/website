@@ -1,0 +1,266 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{float}
+\usepackage{amsmath, amssymb, graphicx}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{Étude de la transition ordre-désordre dans le modèle d’Ising 2D par simulation de Monte Carlo}
+\author{Neyl Gasmi \\ TIPE (non présenté)}
+\date{2025}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Cet article explore la transition ordre–désordre à une température critique dans le modèle d’Ising en étudiant la magnétisation par site et la chaleur spécifique à différentes températures. Un modèle d’Ising bidimensionnel $100 \times 100$ avec conditions périodiques aux limites a été utilisé. Chaque site s’est vu attribuer un spin $+1$ ou $-1$. Aucun effet de champ magnétique externe n’a été considéré. $J$ a été fixé à $-4 ,\text{eV}$. Un algorithme de Metropolis a été utilisé pour résoudre le modèle 2D. L’algorithme a été exécuté suffisamment longtemps pour permettre au système d’atteindre l’équilibre. Il a été observé que la transition de la magnétisation moyenne devient très nette à la température critique. La magnétisation moyenne était nulle au-dessus de la température critique (phase paramagnétique) et égale à un en dessous de cette température (phase ferromagnétique).
+\end{abstract}
+
+\section{Introduction}
+Le modèle d’Ising est l’un des modèles les plus étudiés en mécanique statistique. Bien que très simple, il s’avère extrêmement efficace pour prédire le comportement de systèmes réels. Sa propriété la plus importante est la transition de phase ordre–désordre. Au-delà d’une température critique, la magnétisation par site $m$ reste très faible, tandis qu’en dessous elle devient non nulle et, le plus souvent, proche de sa valeur maximale égale à 1. Cela correspond bien à l’intuition : à haute température, les spins sont orientés de façon aléatoire, tandis qu’à basse température, ils s’alignent tous dans la même direction, vers le haut ou vers le bas.
+
+À l’approche de la température critique $T_c$, la transition entre un $m$ faible et un $m$ élevé devient particulièrement abrupte. En dessous de $T_c$, le système choisit aléatoirement de s’aligner vers le haut ou vers le bas. C’est précisément ce phénomène de transition de phase que nous cherchons à analyser dans ce travail. Les courbes de magnétisation par site et de chaleur spécifique présentées dans la section des résultats illustrent clairement ce comportement.
+
+Dans ce cadre, nous appliquons les outils de la mécanique statistique pour résoudre un modèle d’Ising bidimensionnel. Nous calculerons la magnétisation par site et la chaleur spécifique afin d’observer la transition ordre–désordre à la température critique. La première section présente les notions nécessaires à la compréhension du modèle. La deuxième section détaille le modèle d’Ising et ses propriétés. La troisième décrit l’algorithme de Metropolis utilisé pour la simulation. La quatrième section expose et discute les résultats, et enfin la cinquième section propose une conclusion.
+
+\section{Concepts de mécanique statistique}
+Résoudre exactement les équations décrivant un système composé d’un grand nombre d’atomes ou de molécules est, en pratique, impossible. Certes, il est théoriquement possible d’écrire les équations du mouvement pour un tel système, mais leur quantité est si immense qu’il devient irréaliste de chercher à les résoudre.  
+
+Pour donner un ordre de grandeur : un litre d’oxygène à température et pression normales contient environ $3 \times 10^{22}$ molécules. Chacune se déplace et interagit en permanence avec les autres ainsi qu’avec les parois du récipient. Dans ce contexte, résoudre directement les équations hamiltoniennes est hors de portée. Pourtant, les propriétés macroscopiques de ces systèmes demeurent stables et prévisibles.  
+
+La mécanique statistique fournit une solution élégante : plutôt que de s’attaquer aux équations du mouvement une par une, elle adopte une approche probabiliste. L’idée est de ne plus chercher une description exacte et déterministe, mais de calculer la probabilité qu’un système se trouve dans un état donné.  
+
+Ainsi, si l’on suppose que le système est dans un état $A$, il suffit d’attendre un court instant pour qu’il puisse évoluer vers un très grand nombre d’autres états possibles. C’est précisément là que la description probabiliste devient pertinente.  
+
+On définit alors un poids $w(t)$, qui exprime la probabilité que le système se trouve dans l’état $A$ à l’instant $t$. Avec le temps, le système atteint un état d’équilibre dans lequel ces probabilités suivent la loi de Boltzmann :  
+
+\begin{equation}
+p_A = \frac{e^{-E_A/kT}}{Z},
+\end{equation}
+
+où $E_A$ désigne l’énergie de l’état $A$, $k$ est la constante de Boltzmann et $Z = \sum e^{-E_A/kT}$ la fonction de partition assurant la normalisation.  
+
+Dès lors, la valeur moyenne d’une grandeur physique $Q$ peut s’écrire :  
+
+\begin{equation}
+\langle Q \rangle = \sum_A Q_A \, p_A,
+\end{equation}
+
+où $Q_A$ est la valeur de $Q$ lorsque le système est dans l’état $A$, et $p_A$ la probabilité correspondante.  
+
+Cette approche est valable pour les systèmes à l’équilibre. Les systèmes hors équilibre, quant à eux, demandent un traitement bien plus complexe, que nous ne développerons pas ici.
+
+\section{Le modèle d’Ising}
+
+Le modèle d’Ising est un modèle simplifié visant à représenter le comportement magnétique d’un matériau.  
+L’idée centrale est que le magnétisme d’un solide provient de la combinaison des moments dipolaires magnétiques des spins atomiques qui le composent.  
+
+Lorsqu’un courant circule dans une boucle fermée, un champ magnétique apparaît. De manière analogue, le mouvement des électrons autour du noyau génère de petits champs magnétiques. Ces « aimants atomiques » se comportent comme de véritables aimants : leurs vecteurs magnétiques pointent vers le haut ou vers le bas (du pôle sud vers le nord ou inversement).  
+
+Dans un matériau ordinaire, ces aimants atomiques sont orientés aléatoirement et s’annulent mutuellement, ce qui fait disparaître le magnétisme global. En revanche, dans certains matériaux (comme le fer), les spins atomiques peuvent s’aligner préférentiellement dans une direction et donner naissance à un magnétisme macroscopique.  
+
+Dans le modèle d’Ising, on choisit une géométrie de réseau (par exemple un réseau cubique simple) et l’on assigne à chaque site un spin pouvant prendre uniquement deux valeurs : $+1$ ou $-1$.  
+Dans ce papier, nous considérons un modèle d’Ising bidimensionnel, comme représenté à la Fig.1.  
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.3\textwidth]{ising_lattice.png} % <-- insérer ici le chemin de ton graphique
+  \caption{Modèle 2D en réseau : les spins rouges n’interagissent qu’avec les spins jaunes.}
+  \label{fig:ising_lattice}
+\end{figure}
+
+Dans les systèmes réels, les spins interagissent entre eux. Pour prendre en compte ces interactions, le modèle d’Ising introduit dans son hamiltonien un terme proportionnel au produit de deux spins voisins $s_i s_j$. On suppose que tous les spins interagissent avec la même intensité $J$ (exprimée en énergie), et que seules les interactions entre plus proches voisins sont retenues. L’hamiltonien du système s’écrit donc :  
+
+\begin{equation}
+H = -J \sum_{\langle i,j \rangle} s_i s_j,
+\end{equation}
+
+où $\langle i,j \rangle$ indique que la somme est restreinte aux paires de spins voisins.  
+Le signe de $J$ détermine la nature du matériau : $J > 0$ favorise l’alignement des spins (ferromagnétisme), tandis que $J < 0$ favorise l’anti-alignement (antiferromagnétisme).  
+
+À haute température, les spins sont désordonnés et non corrélés. Lorsque la température diminue, les interactions favorisent l’alignement local des spins, ce qui conduit à l’apparition de corrélations dans le système. Cela entraîne la formation de « clusters » de spins orientés dans la même direction.  
+
+À l’approche de la température critique $T_c$, la taille de ces clusters diverge : au moment de la transition, il peut apparaître des régions arbitrairement grandes où les spins pointent majoritairement vers le haut ou vers le bas.  
+
+En dessous de $T_c$, le système choisit spontanément une orientation globale (soit la majorité des spins pointent vers le haut, soit vers le bas). Le choix dépend uniquement des fluctuations thermiques présentes au moment où le système traverse la transition.  
+
+Ainsi, le modèle d’Ising illustre de façon claire une transition de phase ordre–désordre, correspondant au passage d’un état paramagnétique (au-dessus de $T_c$) à un état ferromagnétique (en dessous de $T_c$).
+
+\section{Metropolis Algorithm}
+
+Le \emph{Metropolis algorithm} est un algorithme largement utilisé qui génère une séquence d’états microscopiques.  
+Supposons que nous essayions de calculer $\langle A \rangle$ par échantillonnage aléatoire, c’est-à-dire en générant $n$ états aléatoires, alors nous aurions :  
+
+\begin{equation}
+\langle A \rangle =
+\frac{\sum_{i=1}^{n} A(s_i)\, e^{-H(s_i)/kT}}
+     {\sum_{i=1}^{n} e^{-H(s_i)/kT}}
+\tag{4}
+\end{equation}
+
+Cette méthode conduit à une mauvaise convergence de l’estimation de $\langle A \rangle$, car pour beaucoup des $n$ états, la probabilité d’équilibre $P_{\text{eq}}$ est faible.  
+Une alternative consiste à échantillonner les états de telle sorte qu’ils apparaissent avec une distribution non aléatoire $P(s_i)$, ce qui donne :  
+
+\begin{equation}
+\langle A \rangle =
+\frac{\sum_{i=1}^{n} \dfrac{A(s_i)\, e^{-H(s_i)/kT}}{P(s_i)}}
+     {\sum_{i=1}^{n} \dfrac{e^{-H(s_i)/kT}}{P(s_i)}}
+\tag{5}
+\end{equation}
+
+Le meilleur choix consiste à prendre $P(s_i)$ égal à la distribution de probabilité de Boltzmann (distribution d’équilibre). Avec ce choix, on obtient :  
+
+\begin{equation}
+\langle A \rangle = \frac{\sum_{i=1}^n A(s_i)}{n}
+\label{eq:boltzmann}
+\end{equation}
+
+Cette approche permet une convergence rapide de l’estimation de $\langle A \rangle$.  
+L’algorithme de Metropolis aide à générer une séquence d’états en suivant une probabilité de transition :  
+
+\begin{equation}
+W\big(S(t_l) \rightarrow S(t_{l+1})\big) = W_{l,l+1},
+\label{eq:transition}
+\end{equation}
+
+où $W$ est la probabilité de passer de l’état $S(l)$ à l’état $S(l+1)$.  
+Les états sont générés de manière stochastique selon cette probabilité. Cette suite d’états constitue une \emph{chaîne de Markov}, c’est-à-dire que chaque état ne dépend que de l’état précédent.  
+
+Cependant, $W_{l,l+1}$ doit respecter la condition de \textbf{balance détaillée}, c’est-à-dire que le nombre d’états passant de $s_l$ à $s_l'$ est égal au nombre d’états repassant de $s_l'$ à $s_l$.  
+
+\section*{V. Application au code}
+
+\begin{enumerate}
+  \item \textbf{Conditions périodiques aux limites.} Appliquer des conditions périodiques de sorte que tous les spins aient le même environnement. Les images périodiques s’obtiennent en translatant le système par des multiples de la taille du réseau $n$ (par exemple via l’opérateur modulo).
+
+  \item \textbf{Sélection d’un site aléatoire.} Tirer deux nombres aléatoires $r_1$ et $r_2$ et fixer la position $[x,y] = [r_1,r_2]$ (sur un réseau $n \times n$, on prend typiquement $r_1,r_2 \in \{0,\ldots,n-1\}$).
+
+  \item \textbf{Proposition de mouvement Monte Carlo.} Proposer un flip de spin sur le site choisi : si le spin était $+1$ (up), le changer en $-1$ (down), et inversement.
+
+  \item \textbf{Calcul de la variation d’énergie.} Évaluer la variation d’Hamiltonien associée au flip de spin :
+        \[
+        \Delta E \;=\; -\,2J \sum_{\langle i j \rangle} s_i s_j
+        \tag{8}
+        \]
+        où la somme porte sur les voisins $\langle i j \rangle$ du site retourné.
+
+  \item \textbf{Critère d’acceptation (Metropolis).} Décider d’accepter ou non le mouvement selon :
+        \begin{enumerate}
+          \item si $\Delta H \le 0$, \emph{accepter} le mouvement ;
+          \item si $\Delta H > 0$, tirer un nombre aléatoire $r \in [0,1]$ :
+                \begin{enumerate}
+                  \item si $r \le e^{-\Delta H/kT}$, \emph{accepter} le mouvement ;
+                  \item si $r > e^{-\Delta H/kT}$, \emph{rejeter} le mouvement.
+                \end{enumerate}
+        \end{enumerate}
+
+  \item \textbf{Mise à jour des observables.}
+        \begin{enumerate}
+          \item si le mouvement est accepté, mettre à jour la configuration du réseau ; sinon, la laisser inchangée ;
+          \item si le mouvement est accepté, mettre à jour l’énergie ; sinon, la laisser inchangée ;
+          \item incrémenter le compteur de « temps » (nombre d’essais) de $1$.
+        \end{enumerate}
+
+  \item \textbf{Répétition.} Répéter les étapes ci-dessus (idéalement jusqu’à l’équilibration, puis sur une durée suffisante pour les moyennes).
+\end{enumerate}
+
+
+\section*{VI. Résultats}
+
+Le modèle d’Ising a été simulé à 11 températures différentes, comprises entre $0.5K$ et $3.0K$, pour un total de $3000$ étapes de Monte Carlo. Le couplage a été fixé à $J = -4.0 \, \text{eV}$.  
+Le système a été initialisé avec tous les sites du réseau en spin haut.  
+
+Par « pas de Monte Carlo », on entend que lorsque nous effectuons en moyenne une tentative de retournement de spin pour chacun des $N$ sites, nous avons complété un balayage du réseau. L’axe des abscisses dans les figures suivantes correspond à ce « temps » de simulation.  
+
+Un concept essentiel dans les simulations de type Monte Carlo est celui du \textit{temps d’équilibration}. Il signifie que le système doit évoluer suffisamment longtemps pour atteindre un état stationnaire, avant que l’on commence à mesurer les grandeurs physiques d’intérêt. À l’équilibre, la probabilité moyenne de trouver le système dans un état donné est proportionnelle à la distribution de Boltzmann (cf. Section II). Ainsi, quel que soit l’état initial, le système finit toujours par converger vers un état d’équilibre pour une température donnée.
+
+Les courbes énergie–temps illustrent ce comportement : l’énergie croît de manière régulière jusqu’à atteindre l’équilibre, puis oscille autour d’une valeur moyenne (voir Fig.~\ref{fig:energyT2.1}).  
+Le temps d’équilibration mesuré est en moyenne de $200 \, \mu s$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{energy_T2.1.png}
+    \caption{Énergie en fonction du temps de simulation pour $T = 2.1K$. Le temps d’équilibration est d’environ $200 \, \mu s$.}
+    \label{fig:energyT2.1}
+\end{figure}
+
+On remarque également que le temps d’équilibration diminue avec l’augmentation de la température. Par précaution, les $200 \, \mu s$ initiaux ont été systématiquement exclus de toutes les séries de données.  
+
+Nous avons aussi obtenu des \textit{instantanés} de l’état final du système à différentes températures (Figs.5,6,7). On observe que :  
+- à basse température, la majorité des spins restent orientés vers le haut,  
+- à l’approche de la température critique, apparaissent des amas de spins orientés vers le haut et vers le bas.  
+
+Enfin, la magnétisation moyenne (Fig.8) et la chaleur spécifique par spin (Fig.9) présentent toutes deux le comportement attendu :  
+- la magnétisation passe de 1 à 0 lorsque la température augmente et que les spins deviennent désordonnés,  
+- la chaleur spécifique croît jusqu’à la température critique puis décroît à nouveau.  
+
+La courbe de magnétisation n’est pas parfaitement lisse, faute d’un nombre suffisant de températures simulées. Néanmoins, la transition de phase apparaît clairement au voisinage de $T_c = 2.269K$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{energy_T2.4.png}
+    \caption{Énergie en fonction du temps de simulation pour $T = 2.4K$. Le temps d’équilibration reste d’environ $200 \, \mu s$.}
+    \label{fig:energyT2.4}
+\end{figure}
+
+
+
+\section*{VII. Résumé}
+
+Le modèle d’Ising a été simulé à 11 températures différentes comprises entre $0.5$ et $3.0$, pour un total de $3000 \, \mu s$. La valeur du couplage a été fixée à $J = -4 \, \text{eV}$.  
+Le temps d’équilibration a été estimé à environ $200 \, \mu s$.  
+
+Les données issues de ces simulations ont permis de tracer les courbes de la magnétisation et de la chaleur spécifique par spin. Le code du modèle d’Ising a reproduit le comportement attendu, tel que décrit en Section III.  
+
+Nous avons pu observer clairement la transition de phase au voisinage de la température critique $T_c = 2.269K$. En effet :  
+- la magnétisation passe de 1 à 0 lorsque la température augmente et que les spins deviennent désordonnés,  
+- la chaleur spécifique atteint un maximum à la température critique, puis décroît à nouveau.  
+
+L’erreur statistique n’a pas été calculée dans ce travail. Cependant, comme il s’agit d’une méthode de type Monte Carlo, une incertitude est toujours associée à chaque grandeur mesurée.  
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{energy_T3.0.png}
+    \caption{Énergie en fonction du temps de simulation pour $T = 3.0K$. Le temps d’équilibration est d’environ $200 \, \mu s$.}
+    \label{fig:energyT3.0}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{snapshot_T2.1.png}
+    \caption{Snapshot d’un réseau $100 \times 100$ du modèle d’Ising à $T = 2.1K$.}
+    \label{fig:snapshot_T2.1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{snapshot_T2.268.png}
+    \caption{Snapshot d’un réseau $100 \times 100$ du modèle d’Ising à $T = 2.268K$.}
+    \label{fig:snapshot_T2.268}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{snapshot_T3.0.png}
+    \caption{Snapshot d’un réseau $100 \times 100$ du modèle d’Ising à $T = 3.0K$.}
+    \label{fig:snapshot_T3.0}
+\end{figure}
+
+
+\section*{Références}
+
+\begin{enumerate}
+  \item L. Onsager, \textit{Crystal statistics. I. A two-dimensional model with an order-disorder transition}, Physical Review \textbf{65}, 117–149 (1944). 
+  \item M. Hjorth-Jensen, \textit{Numerical Methods in Computational Physics}, notes de cours (2009).
+  \item N. Goldenfeld, \textit{Lectures on Phase Transitions and the Renormalization Group}, notes de cours.
+  \item \textit{Simulation Monte Carlo du modèle d’Ising} (M1 PAP, 2022), notes de cours.
+  \item L. Gay, \textit{Le modèle d’Ising et sa simulation}, notes de cours. 
+  \item F. Legrand, \textit{Introduction à la méthode de Monte Carlo en physique statistique}, ressource en ligne. 
+\end{enumerate}
+
+
+\end{document}
