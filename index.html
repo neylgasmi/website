@@ -41,21 +41,24 @@
       <h1>Neyl Gasmi</h1>
 
       <p class="positioning">
-        Research intern at the <a href="https://samm.univ-paris1.fr/" rel="noopener">SAMM Lab</a>
-        (Paris 1) with <a href="https://www.pantheonsorbonne.fr/page-perso/alain.celisse%40" rel="noopener">Alain Celisse</a>,
-        working on state space models applied to variable star classification on OGLE-IV photometric time series.
-        Previously at <a href="https://euroctp.eu/" rel="noopener">EuroCTP</a>, Amsterdam,
-        on the EU equity consolidated tape data quality.
+Graduate student in stochastic modelling <a href="https://m2mo.math.u-paris.fr/index.html" rel="noopener">(M2MO)</a> at
+        Université Paris Cité and ENSAE.
+        I spent two summers at <a href="https://euroctp.eu/" rel="noopener">EuroCTP</a> in Amsterdam,
+        the EU consolidated tape provider, studying price formation in European equities and ETFs across trading venues.
+        I also worked with <a href="https://www.pantheonsorbonne.fr/page-perso/alain.celisse%40" rel="noopener">Alain Celisse</a>
+        (<a href="https://samm.univ-paris1.fr/" rel="noopener">SAMM Lab</a>, Paris 1)
+        on state space models for variable star light curves.
       </p>
 
       <h2>Selected work</h2>
 
-      <div class="work work--img">
+<div class="work work--img">
         <div>
           <div class="work-title">State Space Models for Astrophysics <a href="pdfs/research/state-space-models-astrophysics-en.html" class="gh-link"><i class="fa-solid fa-newspaper"></i></a></div>
-          <p>Mamba (SSM) architecture for variable star classification on irregular time series. Benchmarked against Transformer and LSTM baselines at iso-parameters.
+          <p>AstroMAMBA, a selective state-space encoder (HiPPO-initialised) trained on 150k irregularly sampled OGLE-IV light curves, learning representations directly from raw observation times without resampling or period estimation.
+            Tested the isometry hypothesis against physical parameter space and benchmarked against Astromer 2, a self-supervised light-curve foundation model.
             Supervised by <a href="https://www.pantheonsorbonne.fr/page-perso/alain.celisse%40" rel="noopener">A. Celisse</a>.</p>
-          <p class="research-meta">2026, ongoing</p>
+          <p class="research-meta">March to September 2026</p>
         </div>
         <figure class="work-figure" style="margin:0;">
           <img class="work-image" src="docs/astro.png" alt="Variable star classification">
@@ -67,13 +70,13 @@
         </figure>
       </div>
 
-      <div class="work work--img">
+<div class="work work--img">
         <div>
-          <div class="work-title">Jump detection via online sequential FDR control <a href="https://github.com/neylgsm/FDR" target="_blank" rel="noopener" class="gh-link"><i class="fa-brands fa-github"></i></a> <a href="docs/publish.pdf" class="gh-link"><i class="fa-solid fa-newspaper"></i></a> </div>
-          <p>Implementation of a jump detection pipeline in high-frequency tick data using composite e-values (GROW) and online sequential FDR control procedures.
-            Benchmarked against the classical BH procedure, which loses FDR validity under high-frequency dependence due to bipower variation bias.
-           </p>
-          <p class="research-meta">2026</p>
+          <div class="work-title">E-value Procedures for Online Jump Detection with FDR Guarantees <a href="https://github.com/neylgsm/FDR" target="_blank" rel="noopener" class="gh-link"><i class="fa-brands fa-github"></i></a> <a href="docs/publish.pdf" class="gh-link"><i class="fa-solid fa-newspaper"></i></a> </div>
+          <p>Online jump detection on high-frequency tick data with a closed-form GROW e-value and online FDR procedures.
+            Benjamini–Hochberg loses FDR control at 5-second sampling, while e-value procedures remain valid under arbitrary dependence.
+            Supervised by <a href="https://www.pantheonsorbonne.fr/page-perso/alain.celisse%40" rel="noopener">A. Celisse</a>.</p>
+          <p class="research-meta">December 2025 to March 2026</p>
         </div>
         <figure class="work-figure" style="margin:0;">
           <img class="work-image" src="docs/section7a_hawkes_intensity.png" alt="Simulated log-price path with a Hawkes self-exciting jump intensity">

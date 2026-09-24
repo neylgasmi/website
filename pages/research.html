@@ -34,12 +34,32 @@
 
       <h1>Research</h1>
 
-      <h2>2026</h2>
+
+
+      <div class="research-block">
+        <h3>Price Formation on the EU Consolidated Tape</h3>
+        <p class="research-meta">
+          EuroCTP, Amsterdam · Jul–Sep 2026 · Internship
+        </p>
+
+        <p><strong>Context.</strong> MiFID II fragmented European equity trading across dozens of venues,
+          leaving no single reference price. MiFIR Article 22a mandates a consolidated tape for equities and ETFs;
+          in December 2025, ESMA selected EuroCTP as the first equities CTP for the EU.</p>
+
+        <p><strong>Mission.</strong> Reconstructed a point-in-time European best bid and offer for 109,348 equities
+          and ETFs from the quote and trade feeds of 30+ asynchronous venues. Venue clocks disagree and
+          quotes go stale, so consolidation adds noise correlated with the efficient price: it does not average out,
+          and it biases realised-volatility and spread estimators. Estimated cross-venue lead–lag and Hasbrouck
+          information shares, separating each venue's contribution to price discovery from correlation induced by
+          asynchronous observation.</p>
+
+        <p><strong>Data.</strong> EuroCTP venue feeds, BMLL Data Lab.</p>
+      </div>
 
       <div class="research-block">
         <h3>State Space Models for Astrophysics <a href="../pdfs/research/state-space-models-astrophysics-en.html" class="gh-link"><i class="fa-solid fa-newspaper"></i></a></h3>
         <p class="research-meta">
-          Supervised by <a href="https://www.pantheonsorbonne.fr/page-perso/alain.celisse%40" rel="noopener">Alain Celisse</a> 
+          <span>Supervised by <a href="https://www.pantheonsorbonne.fr/page-perso/alain.celisse%40" rel="noopener">Alain Celisse</a></span>
         </p>
 
         <p class="refs">
@@ -52,7 +72,7 @@
         <h3>Jump detection via sequential FDR control <a href="https://github.com/neylgsm/FDR" target="_blank" rel="noopener" class="gh-link"><i class="fa-brands fa-github"></i></a> <a href="../docs/publish.pdf" class="gh-link"><i class="fa-solid fa-newspaper"></i></a>
          </h3>
         <p class="research-meta">
-          Supervised by <a href="https://www.pantheonsorbonne.fr/page-perso/alain.celisse%40" rel="noopener">Alain Celisse</a> 
+          <span>Supervised by <a href="https://www.pantheonsorbonne.fr/page-perso/alain.celisse%40" rel="noopener">Alain Celisse</a></span>
         </p>
 
         <p class="refs">
@@ -60,25 +80,18 @@
         </p>
       </div>
 
-      <h2>2025</h2>
-
-      <div class="research-block">
-        <h3>EU Consolidated Tape</h3>
+            <div class="research-block">
+        <h3>Market Data Quality for the EU Consolidated Tape</h3>
         <p class="research-meta">
           EuroCTP, Amsterdam · Jun–Aug 2025 · Internship
         </p>
 
-        <p><strong>Context.</strong> MiFID II fragmented European equity trading across dozens of venues,
-           leaving no single reference price where a centralised exchange would provide one. MiFIR Article 22a 
-           mandates a Consolidated Tape Provider (CTP) for equities; on 19 December 2025, ESMA selected EuroCTP
-           as the first equities CTP for the EU, with a target go-live in July 2026.</p>
+        <p><strong>Mission.</strong> Characterised the market events that distort a consolidated EBBO in BMLL Level 3
+          data: latency spikes, crossed or locked books, fat-finger prints. Proposed acceptance thresholds conditioned
+          on liquidity regime, since static cutoffs misclassify wide-spread illiquid states as anomalous; author
+          of the resulting methodology note in EuroCTP's ESMA tender response. </p>
 
-        <p><strong>Mission.</strong> Worked with BMLL Level 3 order-book data to characterise which market events distort 
-          the consolidated EBBO: anomalous prints, erroneous quotes, fat-finger trades... The core question was where to draw the line between a genuine 
-          but extreme price move and a data artefact, proposed acceptance thresholds addressing this, feeding into EuroCTP's research report submitted to ESMA as 
-          part of its CTP tender response.</p>
-
-        <p><strong>Tools.</strong> Pandas, PySpark, SQL, Clustering. Data: BMLL Data Lab, AWS Athena.</p>
+        <p><strong>Data.</strong> BMLL Data Lab.</p>
       </div>
 
       <h2>Research interests</h2>
