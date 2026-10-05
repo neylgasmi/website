@@ -71,6 +71,7 @@ h2 {
   margin: 3.5rem 0 1.75rem;
 }
 .page-header + h2 { margin-top: 0; }
+main > h2:first-child, main > :first-child > h2:first-child { margin-top: 0; }
 h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: .4rem; }
 
 p { max-width: 64ch; margin-bottom: 1rem; color: #2c2a27; }
@@ -106,6 +107,7 @@ hr { border: none; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
 
 
 .research-block { padding: 2.1rem 0; border-top: 1px solid var(--rule); }
+.research-block:first-child { border-top: none; padding-top: 0; }
 .research-meta { font-family: 'Inter', sans-serif; color: var(--muted); font-size: .8rem; margin-bottom: .85rem; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
 .lang-switch a { color: var(--muted); }
 .lang-switch a:hover { color: var(--accent); }
